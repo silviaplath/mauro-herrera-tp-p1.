@@ -5,17 +5,16 @@ import entorno.InterfaceJuego;
 
 public class Juego extends InterfaceJuego
 {
-	// El objeto Entorno que controla el tiempo y otros
+	
 	private Entorno entorno;
 	private obstaculos [] ObstaculosArray;
 	Mago Mago ;
+	enemigos [] enemigo = new enemigos [5];
 	
-	// Variables y métodos propios de cada grupo
-	// ...
 	
 	Juego()
 	{
-		// Inicializa el objeto entorno
+		
 		this.entorno = new Entorno(this, "Proyecto para TP", 800, 600);
 		Mago = new Mago(50, 50,  20);
 		
@@ -25,19 +24,18 @@ public class Juego extends InterfaceJuego
 		ObstaculosArray[2] = new obstaculos(300, 400);
 		ObstaculosArray[3] = new obstaculos(500, 350);
 		ObstaculosArray[4] = new obstaculos(400, 500);
-		// Inicializar lo que haga falta para el juego
-		// ...
-
-		// Inicia el juego!
+		
+		enemigo[0] = new enemigos(100, 100);
+		enemigo[1] = new enemigos(700, 100);
+		enemigo[2] = new enemigos(100, 500);
+		enemigo[3] = new enemigos(700, 500);
+		enemigo[4] = new enemigos(400, 300);
+		
 		this.entorno.iniciar();
 	}
 
-	/**
-	 * Durante el juego, el método tick() será ejecutado en cada instante y 
-	 * por lo tanto es el método más importante de esta clase. Aquí se debe 
-	 * actualizar el estado interno del juego para simular el paso del tiempo 
-	 * (ver el enunciado del TP para mayor detalle).
-	 */
+	
+	
 	public void tick()
 	{
 		entorno.dibujarRectangulo(400, 300, 800, 600, 0, new Color(255, 253, 245));
@@ -60,8 +58,11 @@ public class Juego extends InterfaceJuego
             ObstaculosArray[i].dibujar(entorno);
         }
 		
-		// Procesamiento de un instante de tiempo
-		// ...
+		for (int i = 0; i < enemigo.length; i++) {
+		    enemigo[i].moverHacia(Mago);
+		    enemigo[i].dibujar(entorno);
+		}
+		
 		
 	}
 	
