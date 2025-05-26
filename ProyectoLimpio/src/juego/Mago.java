@@ -20,16 +20,29 @@ int radio;
 		Color miColor = new Color(255, 0, 255);
 		entorno.dibujarCirculo(x, y, 2 * radio, miColor);
 	}
-public void moverArriba () {
+public void moverArriba (Entorno entorno) {
 	y = y-3;
-}
-public void moverAbajo () {
+	  if (y < radio) {
+          y = radio;
+      }
+  }
+
+public void moverAbajo (Entorno entorno) {
 	y = y+3;
+	  if (y > entorno.alto() - radio) {
+          y = entorno.alto() - radio;
+      }
 }
-public void moverDerecha () {
+public void moverDerecha (Entorno entorno) {
 	x = x+3;
+	if (x > entorno.ancho() - radio) {
+        x = entorno.ancho() - radio;
+    }
 }
-public void moverIzquierda() {
+public void moverIzquierda(Entorno entorno) {
 	x = x-3;
+	 if (x < radio) {
+         x = radio;
+     }
 }
 }

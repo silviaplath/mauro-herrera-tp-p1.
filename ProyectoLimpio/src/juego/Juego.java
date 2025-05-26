@@ -17,7 +17,7 @@ public class Juego extends InterfaceJuego
 	{
 		// Inicializa el objeto entorno
 		this.entorno = new Entorno(this, "Proyecto para TP", 800, 600);
-		Mago = new Mago(50, 50,  Math.PI / 4);
+		Mago = new Mago(50, 50,  20);
 		
 		ObstaculosArray = new obstaculos[5];
 		ObstaculosArray[0] = new obstaculos(200, 150);
@@ -40,21 +40,21 @@ public class Juego extends InterfaceJuego
 	 */
 	public void tick()
 	{
+		entorno.dibujarRectangulo(400, 300, 800, 600, 0, new Color(255, 253, 245));
 		Mago.dibujar(entorno);
 		
 		
-		
 		if (entorno.estaPresionada('W')) {
-			Mago.moverArriba();
+			Mago.moverArriba(entorno);
 		}
 		if (entorno.estaPresionada('s')) {
-			Mago.moverAbajo();
+			Mago.moverAbajo(entorno);
 		}
 		if (entorno.estaPresionada('a')) {
-			Mago.moverIzquierda();
+			Mago.moverIzquierda(entorno);
 		}
 		if (entorno.estaPresionada('d')) {
-			Mago.moverDerecha();
+			Mago.moverDerecha(entorno);
 		}
 		for (int i = 0; i < ObstaculosArray.length; i++) {
             ObstaculosArray[i].dibujar(entorno);
