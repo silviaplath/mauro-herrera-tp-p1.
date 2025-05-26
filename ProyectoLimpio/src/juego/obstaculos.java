@@ -14,7 +14,7 @@ Image imagen;
 public obstaculos (double x, double y) {
     this.x = x;
     this.y = y;
-    this.imagen = Herramientas.cargarImagen("imagenes/gema.jpg");
+    this.imagen = Herramientas.cargarImagen("imagenes/oie_transparent.png");
 }
 public void dibujar(Entorno entorno) {
     entorno.dibujarImagen(this.imagen, this.x, this.y, 0, 0.05);
