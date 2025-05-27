@@ -5,6 +5,7 @@ import java.awt.Color;
 import entorno.Herramientas;
 
 public class Mago {
+public Image imagen;
 double x;
 double y;
 int radio;
@@ -12,13 +13,15 @@ int radio;
 	this.x = x;
 	this.y = y;
 	this.radio = 20;
-	
+	this.imagen = Herramientas.cargarImagen("imagenes/oie_transparent (1).png");
+
 }
 
 
  public void dibujar(Entorno entorno) {
 		Color miColor = new Color(255, 0, 255);
-		entorno.dibujarCirculo(x, y, 2 * radio, miColor);
+		entorno.dibujarCirculo(x, y, 1.4* radio, miColor);
+		 entorno.dibujarImagen(imagen, x, y, 0, 0.035);
 	}
 public void moverArriba (Entorno entorno) {
 	y = y-3;
