@@ -48,4 +48,11 @@ public void moverIzquierda(Entorno entorno) {
          x = radio;
      }
 }
+public boolean colisionRocas(obstaculos roca) {
+	
+	return x-radio < roca.bordeDer() &&
+			x+radio > roca.bordeIzq() &&
+			y-radio < roca.bordeInf() &&
+			y+radio > roca.bordeSup();
+}
 }
