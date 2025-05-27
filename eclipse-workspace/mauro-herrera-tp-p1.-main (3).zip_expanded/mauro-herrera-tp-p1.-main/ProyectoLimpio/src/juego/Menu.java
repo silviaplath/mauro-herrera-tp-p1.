@@ -15,13 +15,24 @@ public class Menu {
 
 		public void dibujar(Entorno entorno) {
 			entorno.dibujarRectangulo(botonFuegoX, botonFuegoY, anchoBoton, altoBoton, 0, Color.RED);
-			entorno.cambiarFont("Palace Script", 18, Color.BLACK);
+			entorno.cambiarFont("Caladea", 18, Color.BLACK);
 			entorno.escribirTexto("Fuego", botonFuegoX - 30, botonFuegoY + 5);
 
 			entorno.dibujarRectangulo(botonAguaX, botonAguaY, anchoBoton, altoBoton, 0, Color.CYAN);
-			entorno.cambiarFont("Palace Script", 18, Color.BLACK);
+			entorno.cambiarFont("Caladea", 18, Color.BLACK);
 			entorno.escribirTexto("Agua", botonAguaX - 25, botonAguaY + 5);
 	    }
-		
+		public boolean mouseEnBotonFuego(Entorno entorno) {
+			double mouseX = entorno.mouseX();
+			double mouseY = entorno.mouseY();
+			return (mouseX >= this.botonFuegoX - this.anchoBoton / 2 && mouseX <= this.botonFuegoX + this.anchoBoton / 2)
+					&& (mouseY >= this.botonFuegoY - this.altoBoton / 2 && mouseY <= this.botonFuegoY + this.altoBoton / 2);
 		}
-
+		public boolean mouseEnBotonAgua(Entorno entorno) {
+			double mouseX = entorno.mouseX();
+			double mouseY = entorno.mouseY();
+			return (mouseX >= this.botonAguaX - this.anchoBoton / 2 && mouseX <= this.botonAguaX + this.anchoBoton / 2)
+					&& (mouseY >= this.botonAguaY - this.altoBoton / 2 && mouseY <= this.botonAguaY + this.altoBoton / 2);
+		}
+		}
+		
