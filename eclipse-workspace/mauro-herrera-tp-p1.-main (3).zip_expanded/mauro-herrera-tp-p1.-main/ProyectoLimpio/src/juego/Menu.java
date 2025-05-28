@@ -11,15 +11,21 @@ public class Menu {
 		 private int botonAguaY = 300;
 		 private int anchoBoton = 100;
 		 private int altoBoton = 40;
-	
-
+	     private Image fondo;
+		
+	     	public Menu () {
+	     		 this.fondo = Herramientas.cargarImagen("imagenes/WhatsApp Image 2025-05-27 at 23.31.53 (1).jpeg");
+	     	}
 		public void dibujar(Entorno entorno) {
+			
+			 entorno.dibujarImagen(this.fondo, 700, 300, 0);
+			
 			entorno.dibujarRectangulo(botonFuegoX, botonFuegoY, anchoBoton, altoBoton, 0, Color.RED);
-			entorno.cambiarFont("Caladea", 18, Color.BLACK);
+			entorno.cambiarFont("Lucida Calligraphy", 18, Color.BLACK);
 			entorno.escribirTexto("Fuego", botonFuegoX - 30, botonFuegoY + 5);
 
 			entorno.dibujarRectangulo(botonAguaX, botonAguaY, anchoBoton, altoBoton, 0, Color.CYAN);
-			entorno.cambiarFont("Caladea", 18, Color.BLACK);
+			entorno.cambiarFont("Lucida Calligraphy", 18, Color.BLACK);
 			entorno.escribirTexto("Agua", botonAguaX - 25, botonAguaY + 5);
 	    }
 		public boolean mouseEnBotonFuego(Entorno entorno) {

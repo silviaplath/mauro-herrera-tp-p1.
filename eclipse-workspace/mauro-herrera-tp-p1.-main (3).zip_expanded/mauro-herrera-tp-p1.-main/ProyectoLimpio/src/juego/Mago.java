@@ -48,6 +48,22 @@ public void moverIzquierda(Entorno entorno) {
          x = radio;
      }
 }
+public boolean colisionMenu() {
+    double menuX = 700;
+    double menuY = 300;
+    double menuAncho = 200;
+    double menuAlto = 600;
+    
+    double bordeIzq = menuX - menuAncho / 2;   
+    double bordeDer = menuX + menuAncho / 2;   
+    double bordeSup = menuY - menuAlto / 2;    
+    double bordeInf = menuY + menuAlto / 2;    
+    
+    boolean choqueX = (x + radio) > bordeIzq && (x - radio) < bordeDer;
+    boolean choqueY = (y + radio) > bordeSup && (y - radio) < bordeInf;
+
+    return choqueX && choqueY;
+}
 public boolean colisionRocas(obstaculos roca) {
 	
 	return x-radio < roca.bordeDer() &&

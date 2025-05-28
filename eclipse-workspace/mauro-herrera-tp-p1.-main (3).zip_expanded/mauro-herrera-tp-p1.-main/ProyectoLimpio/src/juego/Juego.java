@@ -20,7 +20,7 @@ public class Juego extends InterfaceJuego
 	{
 		
 		this.entorno = new Entorno(this, "Proyecto para TP", 800, 600);
-		Mago = new Mago(50, 50,  20);
+		Mago = new Mago(300, 300,  20);
 		this.menu= new Menu();
 		ObstaculosArray = new obstaculos[5];
 		ObstaculosArray[0] = new obstaculos(200, 150);
@@ -49,6 +49,9 @@ public class Juego extends InterfaceJuego
 		entorno.dibujarRectangulo(400, 300, 800, 600, 0, new Color(255, 253, 245));
 		entorno.dibujarImagen(fondo, 300, 400, 0);
 	    Mago.dibujar(entorno);
+	    double xAntes = Mago.x;
+	    double yAntes = Mago.y;
+	    
 	    
 		if (entorno.estaPresionada('W')) {
 			Mago.moverArriba(entorno);
@@ -62,6 +65,22 @@ public class Juego extends InterfaceJuego
 		if (entorno.estaPresionada('d')) {
 			Mago.moverDerecha(entorno);
 		}
+		 boolean choco = false;
+		    for (int i = 0; i < ObstaculosArray.length; i++) {
+		        if (Mago.colisionRocas(ObstaculosArray[i])) {
+		            choco = true;
+		        }
+		    }
+
+		    if (Mago.colisionMenu()) {
+		        choco = true;
+		    }
+
+		    if (choco) {
+		        Mago.x = xAntes;
+		        Mago.y = yAntes;
+		    }
+		
 		for (int i = 0; i < ObstaculosArray.length; i++) {
             ObstaculosArray[i].dibujar(entorno);
         }

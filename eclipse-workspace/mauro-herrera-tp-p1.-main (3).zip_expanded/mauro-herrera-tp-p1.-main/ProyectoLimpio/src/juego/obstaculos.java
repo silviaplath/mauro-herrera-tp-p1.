@@ -16,8 +16,8 @@ Image imagen;
 public obstaculos (double x, double y) {
     this.x = x;
     this.y = y;
-    this.altoroca=50;
-    this.anchoroca=50;
+    this.altoroca=40;
+    this.anchoroca=40;
     this.imagen = Herramientas.cargarImagen("imagenes/oie_transparent.png");
 }
 public void dibujar(Entorno entorno) {
