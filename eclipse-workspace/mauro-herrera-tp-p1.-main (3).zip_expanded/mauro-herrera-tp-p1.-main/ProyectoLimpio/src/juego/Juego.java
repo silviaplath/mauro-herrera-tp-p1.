@@ -14,7 +14,8 @@ public class Juego extends InterfaceJuego
 	Mago Mago ;
 	enemigos [] enemigo = new enemigos [5];
 	public Menu menu;
-	
+	ExplosionFuego fuego;
+	ExplosionMagia magia;
 	
 	Juego()
 	{
@@ -91,13 +92,23 @@ public class Juego extends InterfaceJuego
 		}
 		
 		if (menu.sePresionoBoton(1,entorno) ) {
-			 ExplosionFuego fuego = Mago.lanzarExplosion();
-			 System.out.println("se presiono boton fuego");
+		    fuego = Mago.lanzarExplosion();
+		
+		}
+		if (fuego != null && fuego.duracion > 0) {
+		    fuego.dibujar(entorno);
+		}
+		if (menu.sePresionoBoton(2,entorno) ) {
+		    magia = Mago.lanzarExplosion2();
+		}
+		if (magia != null && magia.duracion > 0) {
+		    magia.dibujar(entorno);
 		}
 	
 		entorno.dibujarRectangulo(700, 300, 200, 600, 0, new Color(220, 220, 220));
 		menu.dibujar(entorno);
-		}
+
+	}
 	
 	
 

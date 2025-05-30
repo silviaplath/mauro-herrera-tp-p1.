@@ -18,9 +18,7 @@ int radio;
 }
  public double getX() { return x; }
  public double getY() { return y; }
- public ExplosionFuego lanzarExplosion() {
-     return new ExplosionFuego(this.x, this.y);
- }
+ 
 
  public void dibujar(Entorno entorno) {
 		Color miColor = new Color(255, 0, 255);
@@ -74,5 +72,11 @@ public boolean colisionRocas(obstaculos roca) {
 			x+radio > roca.bordeIzq() &&
 			y-radio < roca.bordeInf() &&
 			y+radio > roca.bordeSup();
+}
+public ExplosionFuego lanzarExplosion() {
+    return new ExplosionFuego(this.x, this.y);
+}
+public ExplosionMagia lanzarExplosion2() {
+    return new ExplosionMagia(this.x, this.y);
 }
 }

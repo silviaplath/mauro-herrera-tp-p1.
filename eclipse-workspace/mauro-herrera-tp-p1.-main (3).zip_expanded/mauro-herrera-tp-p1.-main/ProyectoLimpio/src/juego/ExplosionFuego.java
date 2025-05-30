@@ -5,8 +5,8 @@ import java.awt.Color;
 import entorno.Herramientas;
 
 public class ExplosionFuego {
-double x,y;
-int duracion;
+public double x,y;
+public int duracion;
 private Image gifExplosion;
 
 public void dibujar(Entorno entorno) {
@@ -18,6 +18,6 @@ public ExplosionFuego(double x, double y) {
     this.x = x;
     this.y = y;
     this.duracion = 30;
-    this.gifExplosion = Herramientas.cargarImagen("imagenes/explosion fuego.gif");
+    this.gifExplosion = Herramientas.cargarImagen("imagenes/explosion fuego (1).gif");
 }
 }
