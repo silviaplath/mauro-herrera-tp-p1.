@@ -16,7 +16,11 @@ int radio;
 	this.imagen = Herramientas.cargarImagen("imagenes/oie_transparent (1).png");
 
 }
-
+ public double getX() { return x; }
+ public double getY() { return y; }
+ public ExplosionFuego lanzarExplosion() {
+     return new ExplosionFuego(this.x, this.y);
+ }
 
  public void dibujar(Entorno entorno) {
 		Color miColor = new Color(255, 0, 255);

@@ -46,7 +46,7 @@ public class Juego extends InterfaceJuego
 	
 	public void tick()
 	{
-		entorno.dibujarRectangulo(400, 300, 800, 600, 0, new Color(255, 253, 245));
+		entorno.dibujarRectangulo(400, 300, 700, 600, 0, new Color(255, 253, 245));
 		entorno.dibujarImagen(fondo, 300, 400, 0);
 	    Mago.dibujar(entorno);
 	    double xAntes = Mago.x;
@@ -90,9 +90,15 @@ public class Juego extends InterfaceJuego
 		    enemigo[i].dibujar(entorno);
 		}
 		
+		if (menu.sePresionoBoton(1,entorno) ) {
+			 ExplosionFuego fuego = Mago.lanzarExplosion();
+			 System.out.println("se presiono boton fuego");
+		}
+	
 		entorno.dibujarRectangulo(700, 300, 200, 600, 0, new Color(220, 220, 220));
 		menu.dibujar(entorno);
-	}
+		}
+	
 	
 
 	@SuppressWarnings("unused")
