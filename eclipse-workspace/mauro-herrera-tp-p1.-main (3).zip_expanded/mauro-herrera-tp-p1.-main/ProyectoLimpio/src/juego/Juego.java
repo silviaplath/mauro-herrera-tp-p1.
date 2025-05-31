@@ -16,7 +16,9 @@ public class Juego extends InterfaceJuego
 	public Menu menu;
 	ExplosionFuego fuego;
 	ExplosionMagia magia;
-	
+	private int hechizoseleccionado = 0 ;
+	private boolean mousePresionadoAnterior = false;
+	private boolean mouseClickActual = false;
 	Juego()
 	{
 		
@@ -53,6 +55,8 @@ public class Juego extends InterfaceJuego
 	    double xAntes = Mago.x;
 	    double yAntes = Mago.y;
 	    
+	    mouseClickActual = entorno.sePresionoBoton(entorno.BOTON_IZQUIERDO) && !mousePresionadoAnterior;
+	    mousePresionadoAnterior = entorno.sePresionoBoton(entorno.BOTON_IZQUIERDO);
 	    
 		if (entorno.estaPresionada('W')) {
 			Mago.moverArriba(entorno);
@@ -79,7 +83,7 @@ public class Juego extends InterfaceJuego
 
 		    if (choco) {
 		        Mago.x = xAntes;
-		        Mago.y = yAntes;
+		        Mago.y = yAntes;	
 		    }
 		
 		for (int i = 0; i < ObstaculosArray.length; i++) {
@@ -91,16 +95,30 @@ public class Juego extends InterfaceJuego
 		    enemigo[i].dibujar(entorno);
 		}
 		
-		if (menu.sePresionoBoton(1,entorno) ) {
-		    fuego = Mago.lanzarExplosion();
-		
+		if (mouseClickActual && menu.mouseEnBotonFuego(entorno) ) {
+		    hechizoseleccionado = 1;
 		}
+		
+		if (mouseClickActual && menu.mouseEnBotonAgua(entorno) ) {
+		    hechizoseleccionado = 2;
+		}
+		
+		boolean mouseEnMenu = entorno.mouseX() > 600;
+		
+		if (mouseClickActual && !menu.mouseEnBotonFuego(entorno) && !menu.mouseEnBotonAgua(entorno)) {
+		    if (hechizoseleccionado == 1) {
+		        fuego = new ExplosionFuego(entorno.mouseX(), entorno.mouseY());
+		        hechizoseleccionado = 0;
+		    } else if (hechizoseleccionado == 2) {
+		        magia = new ExplosionMagia(entorno.mouseX(), entorno.mouseY());
+		        hechizoseleccionado = 0;
+		    }
+		}
+		
 		if (fuego != null && fuego.duracion > 0) {
 		    fuego.dibujar(entorno);
 		}
-		if (menu.sePresionoBoton(2,entorno) ) {
-		    magia = Mago.lanzarExplosion2();
-		}
+		
 		if (magia != null && magia.duracion > 0) {
 		    magia.dibujar(entorno);
 		}
