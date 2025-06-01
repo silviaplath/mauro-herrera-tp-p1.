@@ -13,8 +13,8 @@ public class Juego extends InterfaceJuego
 	private obstaculos [] ObstaculosArray;
 	Mago Mago ;
 	enemigos [] enemigo = new enemigos [80];
-	int enemigosEnPantalla = 20;
-	int siguienteEnemigo = 20;
+	int enemigosEnPantalla = 15;
+	int siguienteEnemigo = 15;
 	public Menu menu;
 	ExplosionFuego fuego;
 	ExplosionMagia magia;
@@ -150,6 +150,25 @@ public class Juego extends InterfaceJuego
 		    }
 		}
 		for (int i = 0; i < enemigosEnPantalla; i++) {
+			  double x = 0, y = 0;
+			    int lado = (int)(Math.random() * 4);
+
+			    if (lado == 0) {          
+			        x = -20;
+			        y = Math.random() * 600;
+			    } else if (lado == 1) {  
+			        x = 820;
+			        y = Math.random() * 600;
+			    } else if (lado == 2) {  
+			        x = Math.random() * 800;
+			        y = -20;
+			    } else {                  
+			        x = Math.random() * 800;
+			        y = 620;
+			    }
+
+			    enemigo[i] = new enemigos(x, y);
+		}
 		    if (enemigo[i] == null && siguienteEnemigo < 80) {
 		        enemigo[i] = new enemigos(Math.random() * 600 + 50, Math.random() * 500 + 50);
 		        siguienteEnemigo++;
