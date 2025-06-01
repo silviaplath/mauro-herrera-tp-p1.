@@ -9,24 +9,24 @@ public class Menu {
 		 private int botonFuegoY = 200;
 		 private int botonAguaX = 700;
 		 private int botonAguaY = 300;
-		 private int anchoBoton = 100;
+		 private int anchoBoton = 150;
 		 private int altoBoton = 40;
 	     private Image fondo;
 		
 	     	public Menu () {
-	     		 this.fondo = Herramientas.cargarImagen("imagenes/WhatsApp Image 2025-05-27 at 23.31.53 (1).jpeg");
+	     		 this.fondo = Herramientas.cargarImagen("imagenes/descarga (3) (1).png");
 	     	}
 		public void dibujar(Entorno entorno) {
 			
 			 entorno.dibujarImagen(this.fondo, 700, 300, 0);
 			
 			entorno.dibujarRectangulo(botonFuegoX, botonFuegoY, anchoBoton, altoBoton, 0, Color.RED);
-			entorno.cambiarFont("Lucida Calligraphy", 18, Color.BLACK);
-			entorno.escribirTexto("Fuego", botonFuegoX - 30, botonFuegoY + 5);
+			entorno.cambiarFont("Cooper Black", 14, Color.BLACK);
+			entorno.escribirTexto("Explosion de Fuego", botonFuegoX - 65, botonFuegoY + 5);
 
 			entorno.dibujarRectangulo(botonAguaX, botonAguaY, anchoBoton, altoBoton, 0, Color.CYAN);
-			entorno.cambiarFont("Lucida Calligraphy", 18, Color.BLACK);
-			entorno.escribirTexto("Agua", botonAguaX - 25, botonAguaY + 5);
+			entorno.cambiarFont("Cooper Black", 15, Color.BLACK);
+			entorno.escribirTexto("Bomba de Magia", botonAguaX - 55, botonAguaY + 5);
 	    }
 		
 		public boolean mouseEnBotonFuego(Entorno entorno) {
@@ -56,6 +56,10 @@ public class Menu {
 			 }
 			 return false;
 			 }
+		public void informacion (Entorno entorno ,int enemigosEliminados) {
+			entorno.cambiarFont("Cooper Black", 15, Color.BLACK);
+			entorno.escribirTexto("Enemigos eliminados: " + enemigosEliminados, 610, 390);
+		}
 		public void BarraEnergia (Entorno entorno , int Energia) {
 			 entorno.dibujarRectangulo( 700.0,120.0, 100.0,20.0, 0, Color.GRAY);
 			 

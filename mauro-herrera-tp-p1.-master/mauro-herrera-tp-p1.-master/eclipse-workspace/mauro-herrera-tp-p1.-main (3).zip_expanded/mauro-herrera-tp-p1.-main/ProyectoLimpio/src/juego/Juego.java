@@ -12,7 +12,7 @@ public class Juego extends InterfaceJuego
 	private Entorno entorno;
 	private obstaculos [] ObstaculosArray;
 	Mago Mago ;
-	enemigos [] enemigo = new enemigos [15];
+	enemigos [] enemigo = new enemigos [65];
 	int enemigosEnPantalla = 15;
 	int siguienteEnemigo = 5;
 	public Menu menu;
@@ -22,15 +22,22 @@ public class Juego extends InterfaceJuego
 	private boolean mousePresionadoAnterior = false;
 	private boolean mouseClickActual = false;
 	int enemigosVivos = 0;
+	int enemigosEliminados;
 	private final int CostoF = 5;
 	private final int CostoM = 20;
 	int contadorRecarga = 0;
+	
 	Juego()
 	{
 		
 		this.entorno = new Entorno(this, "Proyecto para TP", 800, 600);
 		Mago = new Mago(300, 300,  20);
 		this.menu= new Menu();
+		 try {
+	            Herramientas.loop("fast-paced-8-bit-chiptune-instrumental-medium-level-346221.wav"); 
+	        } catch (Exception e) {
+	            System.out.println("No se pudo reproducir la música de fondo.");
+	        }
 		ObstaculosArray = new obstaculos[5];
 		ObstaculosArray[0] = new obstaculos(200, 150);
 		ObstaculosArray[1] = new obstaculos(500, 200);
@@ -111,10 +118,12 @@ public class Juego extends InterfaceJuego
 		if (mouseClickActual && !menu.mouseEnBotonFuego(entorno) && !menu.mouseEnBotonAgua(entorno)) {
 		    if (hechizoseleccionado == 1 && Mago.Energia  >= CostoF) {
 		        fuego = new ExplosionFuego(entorno.mouseX(), entorno.mouseY());
+		        Herramientas.play("medium-explosion-40472.wav");
 		        Mago.gastarEnergia(CostoF);
 		        hechizoseleccionado = 0;
 		    } else if (hechizoseleccionado == 2 && Mago.Energia >= CostoM ) {
 		        magia = new ExplosionMagia(entorno.mouseX(), entorno.mouseY());
+		        Herramientas.play("000913615_prev.wav");
 		        Mago.gastarEnergia(CostoM);
 		        hechizoseleccionado = 0;
 		    }
@@ -138,6 +147,7 @@ public class Juego extends InterfaceJuego
 		            if (colision(enemigo[i].x, enemigo[i].y, 20, fuego.x, fuego.y, 30)) {
 		                enemigo[i] = null; 
 		                enemigosVivos--;
+		                enemigosEliminados++;     
 		            }
 		        }
 		        
@@ -145,13 +155,14 @@ public class Juego extends InterfaceJuego
 		            if (colision(enemigo[i].x, enemigo[i].y, 20, magia.x, magia.y, 30)) {
 		                enemigo[i] = null; 
 		                enemigosVivos--;
+		                enemigosEliminados++;
 		            }
 		        }
 		    }
 		}
 		
 		for (int i = 0; i < enemigosEnPantalla; i++) {
-			 if (enemigo[i] == null && siguienteEnemigo < 80) {
+			 if (enemigo[i] == null && siguienteEnemigo < enemigo.length) {
 			  double x = 0, y = 0;
 			    int lado = (int)(Math.random() * 4);
 
@@ -170,24 +181,22 @@ public class Juego extends InterfaceJuego
 			    }
 
 			    enemigo[i] = new enemigos(x, y);
-		
-		    if (enemigo[i] == null && siguienteEnemigo < 80) {
-		        enemigo[i] = new enemigos(Math.random() * 600 + 50, Math.random() * 500 + 50);
+		        
 		        siguienteEnemigo++;
 		        enemigosVivos++;
 		    }
-		}
+		
 			 contadorRecarga++;
 			    if (contadorRecarga >= 200) {
 			    	Mago.recargarEnergia(1);
 			    	contadorRecarga = 0;
 			    }
-			   
 		}
 		
 		entorno.dibujarRectangulo(700, 300, 200, 600, 0, new Color(220, 220, 220));
 		menu.dibujar(entorno);
 		menu.BarraEnergia(entorno, Mago.Energia);
+		menu.informacion(entorno, enemigosEliminados);
 }
 	
 	
