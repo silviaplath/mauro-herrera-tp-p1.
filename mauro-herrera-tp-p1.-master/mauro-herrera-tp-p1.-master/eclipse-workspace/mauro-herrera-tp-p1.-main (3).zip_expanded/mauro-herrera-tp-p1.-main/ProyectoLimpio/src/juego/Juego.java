@@ -150,6 +150,7 @@ public class Juego extends InterfaceJuego
 		    }
 		}
 		for (int i = 0; i < enemigosEnPantalla; i++) {
+			 if (enemigo[i] == null && siguienteEnemigo < 80) {
 			  double x = 0, y = 0;
 			    int lado = (int)(Math.random() * 4);
 
@@ -168,14 +169,14 @@ public class Juego extends InterfaceJuego
 			    }
 
 			    enemigo[i] = new enemigos(x, y);
-		}
+		
 		    if (enemigo[i] == null && siguienteEnemigo < 80) {
 		        enemigo[i] = new enemigos(Math.random() * 600 + 50, Math.random() * 500 + 50);
 		        siguienteEnemigo++;
 		        enemigosVivos++;
 		    }
 		}
-		
+		}
 		entorno.dibujarRectangulo(700, 300, 200, 600, 0, new Color(220, 220, 220));
 		menu.dibujar(entorno);
 
