@@ -17,7 +17,7 @@ public class ExplosionMagia {
 	    this.x = x;
 	    this.y = y;
 	    this.duracion = 30;
-	    this.gifExplosionMagia = Herramientas.cargarImagen("imagenes/ezgif-882e311c995332.gif");
+	    this.gifExplosionMagia = Herramientas.cargarImagen("imagenes/ezgif-882e311c995332 (1).gif");
 	}
 	}
 

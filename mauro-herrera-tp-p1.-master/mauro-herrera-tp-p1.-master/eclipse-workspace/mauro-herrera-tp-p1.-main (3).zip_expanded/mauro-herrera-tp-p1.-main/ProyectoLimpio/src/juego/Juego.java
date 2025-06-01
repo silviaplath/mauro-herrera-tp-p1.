@@ -22,6 +22,8 @@ public class Juego extends InterfaceJuego
 	private boolean mousePresionadoAnterior = false;
 	private boolean mouseClickActual = false;
 	int enemigosVivos = 0;
+	private final int CostoF = 5;
+	private final int CostoM = 20;
 	Juego()
 	{
 		
@@ -34,11 +36,6 @@ public class Juego extends InterfaceJuego
 		ObstaculosArray[2] = new obstaculos(300, 400);
 		ObstaculosArray[3] = new obstaculos(100, 300);
 		ObstaculosArray[4] = new obstaculos(400, 500);
-		
-		
-		for (int i = 0; i < enemigosEnPantalla; i++) {
-		    enemigo[i] = new enemigos(Math.random() * 600 + 50, Math.random() * 500 + 50);
-		}
 		
 		
 		System.out.println(Arrays.toString(entorno.fontDisponibles));
@@ -111,11 +108,13 @@ public class Juego extends InterfaceJuego
 		boolean mouseEnMenu = entorno.mouseX() > 600;
 		
 		if (mouseClickActual && !menu.mouseEnBotonFuego(entorno) && !menu.mouseEnBotonAgua(entorno)) {
-		    if (hechizoseleccionado == 1) {
+		    if (hechizoseleccionado == 1 && Mago.Energia  >= CostoF) {
 		        fuego = new ExplosionFuego(entorno.mouseX(), entorno.mouseY());
+		        Mago.gastarEnergia(CostoF);
 		        hechizoseleccionado = 0;
-		    } else if (hechizoseleccionado == 2) {
+		    } else if (hechizoseleccionado == 2 && Mago.Energia >= CostoM ) {
 		        magia = new ExplosionMagia(entorno.mouseX(), entorno.mouseY());
+		        Mago.gastarEnergia(CostoM);
 		        hechizoseleccionado = 0;
 		    }
 		}
@@ -149,6 +148,7 @@ public class Juego extends InterfaceJuego
 		        }
 		    }
 		}
+		
 		for (int i = 0; i < enemigosEnPantalla; i++) {
 			 if (enemigo[i] == null && siguienteEnemigo < 80) {
 			  double x = 0, y = 0;
@@ -177,9 +177,10 @@ public class Juego extends InterfaceJuego
 		    }
 		}
 		}
+		
 		entorno.dibujarRectangulo(700, 300, 200, 600, 0, new Color(220, 220, 220));
 		menu.dibujar(entorno);
-
+		menu.BarraEnergia(entorno, Mago.Energia);
 	}
 	
 	

@@ -56,6 +56,13 @@ public class Menu {
 			 }
 			 return false;
 			 }
+		public void BarraEnergia (Entorno entorno , int Energia) {
+			 entorno.dibujarRectangulo( 700.0,120.0, 100.0,20.0, 0, Color.GRAY);
+			 
+			 int anchoBarra = (int) Energia;
+			 entorno.dibujarRectangulo(700.0- 50.0 + anchoBarra / 2.0, 120.0, anchoBarra,20.0 , 0, Color.GREEN);
+		}
+		
 		}
 		
 		

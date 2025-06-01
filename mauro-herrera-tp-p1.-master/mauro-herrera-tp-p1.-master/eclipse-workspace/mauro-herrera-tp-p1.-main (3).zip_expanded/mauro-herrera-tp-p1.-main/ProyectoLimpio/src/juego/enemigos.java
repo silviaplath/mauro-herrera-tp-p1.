@@ -15,8 +15,8 @@ public enemigos (double x , double y) {
 	this.y = y;
 	this.imagen= Herramientas.cargarImagen("imagenes/oie_26212844LHRSFIWB.gif");
 	this.angulo= 0 ;
-	this.velocidad= 0.5 ;
-	this.desfaseAngulo = Math.random() * 0.6 - 0.3;		
+	this.velocidad= 0.3 ;
+	this.desfaseAngulo = Math.random() * 0.7 - 0.4;		
 }
 public void moverHacia(Mago mago) {
     cambiarAngulo(mago.x, mago.y);

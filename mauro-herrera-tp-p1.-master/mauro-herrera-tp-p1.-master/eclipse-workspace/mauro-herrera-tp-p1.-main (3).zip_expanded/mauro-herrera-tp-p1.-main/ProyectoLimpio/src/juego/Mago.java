@@ -9,11 +9,14 @@ public Image imagen;
 double x;
 double y;
 int radio;
+public int Energia;
+
  public Mago(double x, double y ,double radio) {
 	this.x = x;
 	this.y = y;
 	this.radio = 20;
 	this.imagen = Herramientas.cargarImagen("imagenes/oie_transparent (1).png");
+	this.Energia= 100;
 
 }
  public double getX() { return x; }
@@ -79,4 +82,12 @@ public ExplosionFuego lanzarExplosion() {
 public ExplosionMagia lanzarExplosion2() {
     return new ExplosionMagia(this.x, this.y);
 }
+
+public void gastarEnergia(int cantidad) {
+    if (Energia >= cantidad) {
+        Energia -= cantidad;
+    }
 }
+}
+
+
