@@ -11,7 +11,7 @@ double y;
 int radio;
 public int Energia;
 private int energiaMaxima;
-
+int vida;
  public Mago(double x, double y ,double radio) {
 	this.x = x;
 	this.y = y;
@@ -19,6 +19,7 @@ private int energiaMaxima;
 	this.imagen = Herramientas.cargarImagen("imagenes/oie_transparent (1).png");
 	this.Energia= 100;
 	this.energiaMaxima= 100;
+	this.vida=5;
 }
  public double getX() { return x; }
  public double getY() { return y; }
@@ -100,7 +101,8 @@ public void recargarEnergia(int cantidad) {
         Energia = energiaMaxima;
     }
 }
-
 }
+
+
 
 

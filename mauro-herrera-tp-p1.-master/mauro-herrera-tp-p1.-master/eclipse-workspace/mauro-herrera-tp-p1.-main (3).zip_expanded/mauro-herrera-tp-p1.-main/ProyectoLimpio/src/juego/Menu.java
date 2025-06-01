@@ -12,9 +12,10 @@ public class Menu {
 		 private int anchoBoton = 150;
 		 private int altoBoton = 40;
 	     private Image fondo;
-		
+		private Image corazon;
 	     	public Menu () {
 	     		 this.fondo = Herramientas.cargarImagen("imagenes/descarga (3) (1).png");
+	     		this.corazon = Herramientas.cargarImagen("imagenes/Corazón de videojuego _ Vector Gratis (1).png");
 	     	}
 		public void dibujar(Entorno entorno) {
 			
@@ -27,6 +28,7 @@ public class Menu {
 			entorno.dibujarRectangulo(botonAguaX, botonAguaY, anchoBoton, altoBoton, 0, Color.CYAN);
 			entorno.cambiarFont("Cooper Black", 15, Color.BLACK);
 			entorno.escribirTexto("Bomba de Magia", botonAguaX - 55, botonAguaY + 5);
+			
 	    }
 		
 		public boolean mouseEnBotonFuego(Entorno entorno) {
@@ -66,7 +68,11 @@ public class Menu {
 			 int anchoBarra = (int) Energia;
 			 entorno.dibujarRectangulo(700.0- 50.0 + anchoBarra / 2.0, 120.0, anchoBarra,20.0 , 0, Color.GREEN);
 		}
-		
+		public void dibujarvidas(Entorno entorno, int vidas) {
+			for (int i = 0; i < vidas; i++) {
+		        entorno.dibujarImagen(corazon, 700 -70 + i * 35, 450, 0, 0.06);
 		}
+		}
+}
 		
 		
